@@ -2,18 +2,19 @@ package br.com.cdc.windows;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.EventQueue;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JDialog;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -30,9 +31,8 @@ import br.com.cdc.model.TableModelCliente;
 import br.com.cdc.windows.cadastros.Cadastro_Cidade;
 import br.com.cdc.windows.cadastros.Cadastro_Cliente;
 import br.com.cdc.windows.cadastros.Cadastro_Estado;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import br.com.cdc.windows.cadastros.Cadastro_Produto;
+import br.com.cdc.windows.cadastros.Cadastro_Venda;
 
 public class Principal extends JFrame {
 
@@ -201,5 +201,57 @@ public class Principal extends JFrame {
            }
        });
 		mnCadastrarCliente.add(mntmEstado);
+		
+		JMenuItem mntmProduto = new JMenuItem("Produto");
+		mntmProduto.setFont(new Font("Dialog", Font.PLAIN, 16));
+		mntmProduto.addMouseListener(new MouseListener() {
+			 
+			@Override
+	           public void mouseReleased(MouseEvent e) {   
+	           }
+	           @Override
+	           public void mousePressed(MouseEvent e) { 
+	        	   Cadastro_Produto frame = new Cadastro_Produto();
+	        	   frame.setVisible(true);
+	        	   frame.setResizable(false);
+	           }
+	           @Override
+	           public void mouseExited(MouseEvent e) {   
+	           }    
+	           @Override
+	           public void mouseEntered(MouseEvent e) {
+	           }
+	           @Override
+	           public void mouseClicked(MouseEvent e) {
+	           }
+			
+		});
+		mnCadastrarCliente.add(mntmProduto);
+		
+		JMenuItem mntmVenda = new JMenuItem("Venda");
+		mntmVenda.setFont(new Font("Dialog", Font.PLAIN, 16));
+		mntmVenda.addMouseListener(new MouseListener() {
+			 
+			@Override
+	           public void mouseReleased(MouseEvent e) {   
+	           }
+	           @Override
+	           public void mousePressed(MouseEvent e) { 
+	        	   Cadastro_Venda frame = new Cadastro_Venda();
+	        	   frame.setVisible(true);
+	        	   frame.setResizable(false);
+	           }
+	           @Override
+	           public void mouseExited(MouseEvent e) {   
+	           }    
+	           @Override
+	           public void mouseEntered(MouseEvent e) {
+	           }
+	           @Override
+	           public void mouseClicked(MouseEvent e) {
+	           }
+			
+		});
+		mnCadastrarCliente.add(mntmVenda);
 	}
 }

@@ -32,9 +32,9 @@ public class TableModelTipo extends AbstractTableModel{
     }
     public Object getValueAt(int row, int column) {
     	//Retornar o valor da coluna column e da linha row da JTable.
-    	Tipo_Produto produto = tproduto.get(row);
-        if (column == 0) return produto.getId();
-        else return produto.getNome();
+    	Tipo_Produto tprodutos = tproduto.get(row);
+        if (column == 0) return tprodutos.getId();
+        else return tprodutos.getNome();
 
     }
 
@@ -55,9 +55,9 @@ public class TableModelTipo extends AbstractTableModel{
     }
      
     // Adiciona o Estado especificado ao modelo
-    public void addTipo_Produto(Tipo_Produto produto) {
+    public void addTipo_Produto(Tipo_Produto tprodutos) {
         // Adiciona o registro.
-    	tproduto.add(produto);
+    	tproduto.add(tprodutos);
      
         // Pega a quantidade de registros e subtrai 1 para
         // achar o último índice. A subtração é necessária

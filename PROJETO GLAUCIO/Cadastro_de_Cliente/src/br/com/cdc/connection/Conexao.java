@@ -14,6 +14,9 @@ import br.com.cdc.model.Cidade;
 import br.com.cdc.model.Cliente;
 import br.com.cdc.model.Endereco;
 import br.com.cdc.model.Estado;
+import br.com.cdc.model.Produto;
+import br.com.cdc.model.Tipo_Produto;
+import br.com.cdc.model.Venda;
 
 public class Conexao {
 	
@@ -42,6 +45,33 @@ public static EntityManagerFactory emf;
 		
 		List<Estado> estados = query.getResultList();
         return estados;
+	}
+	
+	public static List<Produto> listarProduto() {
+		
+		EntityManager em = emf.createEntityManager();
+		Query query = em.createQuery("FROM Produto");
+		
+		List<Produto> produtos = query.getResultList();
+        return produtos;
+	}
+	
+	public static List<Tipo_Produto> listarTipo_Produto() {
+		
+		EntityManager em = emf.createEntityManager();
+		Query query = em.createQuery("FROM TipoProduto");
+		
+		List<Tipo_Produto> tprodutos = query.getResultList();
+        return tprodutos;
+	}
+	
+	public static List<Venda> listarVenda() {
+		
+		EntityManager em = emf.createEntityManager();
+		Query query = em.createQuery("FROM Vendas");
+		
+		List<Venda> vendas = query.getResultList();
+        return vendas;
 	}
 	
 	public static List<Cidade> listarCidades() {
