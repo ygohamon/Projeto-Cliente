@@ -19,4 +19,5 @@
 <fullyQualifiedTypeName name="java.awt.event.MouseEvent"/>
 <fullyQualifiedTypeName name="javax.persistence.NoResultException"/>
 <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
+<fullyQualifiedTypeName name="br.com.cdc.windows.cadastros.Cadastro_Produto"/>
 </qualifiedTypeNameHistroy>

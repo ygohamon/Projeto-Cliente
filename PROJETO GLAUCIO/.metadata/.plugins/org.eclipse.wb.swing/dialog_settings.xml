@@ -12,4 +12,16 @@
 		<item value="239" key="y"/>
 		<item value="381" key="height"/>
 	</section>
+	<section name="org.eclipse.wb.internal.swing.model.property.editor.accelerator.KeyStrokePropertyEditor$KeyStrokeDialog">
+		<item value="492" key="x"/>
+		<item value="382" key="width"/>
+		<item value="124" key="y"/>
+		<item value="480" key="height"/>
+	</section>
+	<section name="org.eclipse.wb.internal.swing.model.property.editor.icon.IconPropertyEditor$ImageDialog">
+		<item value="242" key="x"/>
+		<item value="881" key="width"/>
+		<item value="74" key="y"/>
+		<item value="580" key="height"/>
+	</section>
 </section>
