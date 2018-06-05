@@ -26,7 +26,12 @@ public class Produto {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
+	public Tipo_Produto getTipo() {
+		return tipo;
+	}
+	public void setTipo(Tipo_Produto tipo) {
+		this.tipo = tipo;
+	}
 	public String getValor() {
 		return valor;
 	}
