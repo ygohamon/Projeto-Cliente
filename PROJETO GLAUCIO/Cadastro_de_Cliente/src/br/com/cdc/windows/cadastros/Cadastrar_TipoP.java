@@ -1,7 +1,6 @@
 package br.com.cdc.windows.cadastros;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,12 +20,14 @@ import javax.swing.border.EmptyBorder;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 import br.com.cdc.connection.Conexao;
-import br.com.cdc.model.Estado;
-import br.com.cdc.model.TableModelEstado;
+import br.com.cdc.model.TableModelTipo;
+import br.com.cdc.model.Tipo_Produto;
 
 public class Cadastrar_TipoP extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
+	private JTextField textTipo;
+	private JTable tableTipo;
 
 	/**
 	 * Launch the application.
@@ -53,53 +54,53 @@ public class Cadastrar_TipoP extends JDialog {
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		
-		JLabel lblCadastroTipo = DefaultComponentFactory.getInstance().createTitle("Cadastro de Estado");
-		lblCadastroDeEstado.setBounds(5, 5, 422, 58);
-		lblCadastroDeEstado.setFont(new Font("Dialog", Font.BOLD, 45));
+		JLabel lblCadastroDeTipo = DefaultComponentFactory.getInstance().createTitle("Cadastro de Tipo");
+		lblCadastroDeTipo.setBounds(5, 5, 422, 58);
+		lblCadastroDeTipo.setFont(new Font("Dialog", Font.BOLD, 45));
 		
-		JLabel lblNome = new JLabel("Estado.: ");
+		JLabel lblNome = new JLabel("Tipo.: ");
 		lblNome.setBounds(5, 215, 68, 21);
 		lblNome.setFont(new Font("Dialog", Font.BOLD, 16));
 		
-		textEstado = new JTextField();
-		textEstado.setBounds(91, 209, 290, 33);
-		textEstado.setFont(new Font("Dialog", Font.PLAIN, 16));
-		textEstado.setColumns(10);
+		textTipo = new JTextField();
+		textTipo.setBounds(91, 209, 290, 33);
+		textTipo.setFont(new Font("Dialog", Font.PLAIN, 16));
+		textTipo.setColumns(10);
 		contentPanel.setLayout(null);
-		contentPanel.add(lblCadastroDeEstado);
+		contentPanel.add(lblCadastroDeTipo);
 		contentPanel.add(lblNome);
-		contentPanel.add(textEstado);
+		contentPanel.add(textTipo);
 		
-		JLabel lblEstadosCadastrados = new JLabel("Estados Cadastradas");
-		lblEstadosCadastrados.setFont(new Font("Dialog", Font.BOLD, 25));
-		lblEstadosCadastrados.setBounds(461, 47, 269, 21);
-		contentPanel.add(lblEstadosCadastrados);
+		JLabel lblTiposCadastrados = new JLabel("Tipos Cadastradas");
+		lblTiposCadastrados.setFont(new Font("Dialog", Font.BOLD, 25));
+		lblTiposCadastrados.setBounds(461, 47, 269, 21);
+		contentPanel.add(lblTiposCadastrados);
 		
-		List<Estado> estados = Conexao.listarEstados();
+		List<Tipo_Produto> tproduto = Conexao.listarTipo_Produto();
 		
 		ArrayList dados = new ArrayList();
 		
-		for(int i = 0; i < estados.size(); i++) {
+		for(int i = 0; i < tproduto.size(); i++) {
 			
-			Estado estado = new Estado();
-			estado.setCodigo(estados.get(i).getCodigo());
-			estado.setNome(estados.get(i).getNome());
-			dados.add(estado);
+			Tipo_Produto tprodutos = new Tipo_Produto();
+			tprodutos.setId(tproduto.get(i).getId());
+			tprodutos.setNome(tproduto.get(i).getNome());
+			dados.add(tproduto);
 		}
 		
-		TableModelEstado modelo = new TableModelEstado(dados);
+		TableModelTipo modelo = new TableModelTipo(dados);
 		
-		tableEstados = new JTable();
-		tableEstados.setBounds(610, 80, 148, 355);
-		contentPanel.add(tableEstados);
+		tableTipo = new JTable();
+		tableTipo.setBounds(610, 80, 148, 355);
+		contentPanel.add(tableTipo);
 		
-		tableEstados.setModel(modelo);
-		tableEstados.getColumnModel().getColumn(0).setPreferredWidth(30);
-		tableEstados.getColumnModel().getColumn(0).setResizable(false);
-		tableEstados.getColumnModel().getColumn(1).setPreferredWidth(210);
-		tableEstados.getColumnModel().getColumn(1).setResizable(false);
+		tableTipo.setModel(modelo);
+		tableTipo.getColumnModel().getColumn(0).setPreferredWidth(30);
+		tableTipo.getColumnModel().getColumn(0).setResizable(false);
+		tableTipo.getColumnModel().getColumn(1).setPreferredWidth(210);
+		tableTipo.getColumnModel().getColumn(1).setResizable(false);
 
-		JScrollPane scrollPane = new JScrollPane(tableEstados);
+		JScrollPane scrollPane = new JScrollPane(tableTipo);
 		scrollPane.setBounds(461, 78, 297, 357);
 		contentPanel.add(scrollPane);
 		
@@ -107,13 +108,13 @@ public class Cadastrar_TipoP extends JDialog {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				Estado estado = new Estado();
+				Tipo_Produto tproduto = new Tipo_Produto();
 				
-				estado.setNome(textEstado.getText());
+				tproduto.setNome(textTipo.getText());
 				
 				try {
 					
-					Conexao.guardar(estado);
+					Conexao.guardar(tproduto);
 					
 				}catch(NullPointerException f) {
 					
@@ -124,10 +125,10 @@ public class Cadastrar_TipoP extends JDialog {
 					JOptionPane.showMessageDialog(null, "Ops.. Algo deu errado: \n" +npe);
 				}
 				
-				textEstado.setText("");
-				JOptionPane.showMessageDialog(null, "Estado Cadastrado!");
-				modelo.addEstado(estado);
-				tableEstados.getModel();
+				textTipo.setText("");
+				JOptionPane.showMessageDialog(null, "Tipo Cadastrado!");
+				modelo.addTipo_Produto(tproduto);
+				tableTipo.getModel();
 				
 			}
 		});
@@ -139,7 +140,7 @@ public class Cadastrar_TipoP extends JDialog {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				textEstado.setText("");
+				textTipo.setText("");
 			}
 		});
 		btnNewButton_1.setFont(new Font("Dialog", Font.BOLD, 16));
@@ -150,11 +151,15 @@ public class Cadastrar_TipoP extends JDialog {
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-         	    Cadastro_Estado.this.dispose();
+         	    Cadastrar_TipoP.this.dispose();
 			}
 		});
 		btnNewButton_2.setFont(new Font("Dialog", Font.BOLD, 16));
 		btnNewButton_2.setBounds(295, 407, 90, 28);
 		contentPanel.add(btnNewButton_2);
+		
+
+		
+	
 	}
 }
