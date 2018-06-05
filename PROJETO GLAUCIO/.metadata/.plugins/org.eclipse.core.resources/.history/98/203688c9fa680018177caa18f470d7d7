@@ -34,7 +34,7 @@ public class Cadastrar_TipoP extends JDialog {
 	 */
 	public static void main(String[] args) {
 		try {
-			Cadastrar_TipoP dialog = new Cadastrar_TipoP();
+			Cadastro_Estado dialog = new Cadastro_Estado();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 			dialog.setResizable(false);
